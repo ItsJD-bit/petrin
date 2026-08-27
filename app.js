@@ -6,66 +6,35 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-// =====================================================
-// EJS CONFIGURATION
-// =====================================================
-
+// EJS
 app.set("view engine", "ejs");
-
-app.set(
-    "views",
-    path.join(__dirname, "views")
-);
+app.set("views", path.join(__dirname, "views"));
 
 
-// =====================================================
-// STATIC FILES
-// =====================================================
-
-// CSS
+// Static files
 app.use(
     "/css",
-    express.static(
-        path.join(__dirname, "css")
-    )
+    express.static(path.join(__dirname, "css"))
 );
 
-// JavaScript
 app.use(
     "/js",
-    express.static(
-        path.join(__dirname, "js")
-    )
+    express.static(path.join(__dirname, "js"))
 );
 
-// Images, audio and videos
 app.use(
     "/assets",
-    express.static(
-        path.join(__dirname, "assets")
-    )
+    express.static(path.join(__dirname, "assets"))
 );
 
 
-// =====================================================
-// HOME PAGE
-// =====================================================
-
+// Home
 app.get("/", (req, res) => {
-
     res.render("index");
-
 });
 
 
-// =====================================================
-// START SERVER
-// =====================================================
-
+// Server
 app.listen(PORT, () => {
-
-    console.log(
-        `Rin website running at http://localhost:${PORT}`
-    );
-
+    console.log(`Rin website running on port ${PORT}`);
 });
