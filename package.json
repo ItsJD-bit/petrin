@@ -1,0 +1,13 @@
+{
+  "name": "rin-website",
+  "version": "1.0.0",
+  "description": "A minimalist personal website dedicated to Rin.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
