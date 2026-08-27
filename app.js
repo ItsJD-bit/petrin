@@ -5,16 +5,67 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const distPath = path.join(__dirname, "dist");
 
-app.use(express.static(distPath));
+// =====================================================
+// EJS CONFIGURATION
+// =====================================================
+
+app.set("view engine", "ejs");
+
+app.set(
+    "views",
+    path.join(__dirname, "views")
+);
+
+
+// =====================================================
+// STATIC FILES
+// =====================================================
+
+// CSS
+app.use(
+    "/css",
+    express.static(
+        path.join(__dirname, "css")
+    )
+);
+
+// JavaScript
+app.use(
+    "/js",
+    express.static(
+        path.join(__dirname, "js")
+    )
+);
+
+// Images, audio and videos
+app.use(
+    "/assets",
+    express.static(
+        path.join(__dirname, "assets")
+    )
+);
+
+
+// =====================================================
+// HOME PAGE
+// =====================================================
 
 app.get("/", (req, res) => {
-    res.sendFile(
-        path.join(distPath, "index.html")
-    );
+
+    res.render("index");
+
 });
 
+
+// =====================================================
+// START SERVER
+// =====================================================
+
 app.listen(PORT, () => {
-    console.log(`Rin website running on port ${PORT}`);
+
+    console.log(
+        `Rin website running at http://localhost:${PORT}`
+    );
+
 });
